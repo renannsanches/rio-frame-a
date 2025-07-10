@@ -8,89 +8,116 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Rio Frame Design System - Clean Professional Theme */
+    --background: 210 7% 97%; /* Branco gelo */
+    --foreground: 0 0% 12%; /* Preto suave #1f1f1f */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%; /* Branco puro para cards */
+    --card-foreground: 0 0% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Azul petróleo principal - cor do logo Rio Frame */
+    --primary: 195 85% 25%; /* Azul petróleo profundo */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 195 60% 35%; /* Variação mais clara */
+    --primary-hover: 195 90% 20%; /* Para hover states */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 15% 95%; /* Cinza muito claro */
+    --secondary-foreground: 0 0% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 12% 92%; /* Fundo sutil */
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 195 85% 25%; /* Mesma cor do primary */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 12% 88%;
+    --input: 210 12% 88%;
+    --ring: 195 85% 25%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* Bordas um pouco mais arredondadas */
 
-    --sidebar-background: 0 0% 98%;
+    /* Gradientes profissionais */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-accent: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-light)));
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Sombras elegantes */
+    --shadow-soft: 0 2px 8px -1px hsl(var(--primary) / 0.1);
+    --shadow-medium: 0 4px 16px -2px hsl(var(--primary) / 0.15);
+    --shadow-strong: 0 8px 32px -4px hsl(var(--primary) / 0.2);
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Transições suaves */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-out;
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar variables */
+    --sidebar-background: hsl(var(--background));
+    --sidebar-foreground: hsl(var(--foreground));
+    --sidebar-primary: hsl(var(--primary));
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: hsl(var(--secondary));
+    --sidebar-accent-foreground: hsl(var(--foreground));
+    --sidebar-border: hsl(var(--border));
+    --sidebar-ring: hsl(var(--ring));
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Modo escuro opcional - manter cores similares */
+    --background: 200 10% 8%;
+    --foreground: 0 0% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 200 15% 10%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 200 15% 10%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 195 85% 45%; /* Azul petróleo mais claro no escuro */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 195 70% 55%;
+    --primary-hover: 195 80% 40%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 200 10% 15%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 200 8% 18%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 195 85% 45%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 200 10% 20%;
+    --input: 200 10% 20%;
+    --ring: 195 85% 45%;
+
+    /* Gradientes modo escuro */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-accent: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-light)));
+
+    /* Sombras modo escuro */
+    --shadow-soft: 0 2px 8px -1px hsl(0 0% 0% / 0.3);
+    --shadow-medium: 0 4px 16px -2px hsl(0 0% 0% / 0.4);
+    --shadow-strong: 0 8px 32px -4px hsl(0 0% 0% / 0.5);
+
+    /* Sidebar dark mode */
+    --sidebar-background: hsl(var(--background));
+    --sidebar-foreground: hsl(var(--foreground));
+    --sidebar-primary: hsl(var(--primary));
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: hsl(var(--secondary));
+    --sidebar-accent-foreground: hsl(var(--foreground));
+    --sidebar-border: hsl(var(--border));
+    --sidebar-ring: hsl(var(--ring));
   }
 }
 
@@ -100,6 +127,108 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Smooth scrolling para navegação */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Estilo personalizado para formulários */
+  input, textarea {
+    @apply transition-colors duration-200;
+  }
+
+  input:focus, textarea:focus {
+    @apply ring-2 ring-primary/20 border-primary;
+  }
+}
+
+@layer components {
+  /* Button variants customizados para Rio Frame */
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-soft hover:shadow-medium;
+  }
+
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .btn-whatsapp {
+    @apply bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-soft hover:shadow-medium;
+  }
+
+  /* Section spacing padronizado */
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+
+  .container-width {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Cards com estilo Rio Frame */
+  .service-card {
+    @apply bg-card p-6 rounded-lg shadow-soft hover:shadow-medium transition-all duration-300 border border-border hover:border-primary/20;
+  }
+
+  /* Hero section background */
+  .hero-bg {
+    background: var(--gradient-hero);
+  }
+
+  /* Animations */
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  /* Animations keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Gradients utilitários */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  /* Shadow utilities */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-strong {
+    box-shadow: var(--shadow-strong);
   }
 }

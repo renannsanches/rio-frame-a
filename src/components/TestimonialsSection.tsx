@@ -1,4 +1,5 @@
 import { Star, Quote } from "lucide-react";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -28,63 +29,69 @@ const TestimonialsSection = () => {
   return (
     <section className="section-padding">
       <div className="container-width">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
-            O que nossos <span className="text-primary">clientes dizem</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A satisfação dos nossos clientes é o nosso maior orgulho. Veja alguns depoimentos.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
+              O que nossos <span className="text-primary">clientes dizem</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              A satisfação dos nossos clientes é o nosso maior orgulho. Veja alguns depoimentos.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="service-card relative">
-              <Quote className="h-8 w-8 text-primary/20 absolute top-4 right-4" />
-              
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 fill-primary text-primary" />
-                ))}
-              </div>
-
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                "{testimonial.text}"
-              </p>
-
-              <div className="border-t border-border pt-4">
-                <div className="font-semibold text-foreground">
-                  {testimonial.name}
+          {testimonials.map((testimonial, index) => (
+            <ScrollReveal key={testimonial.id} animation="fade-up" delay={index * 150}>
+              <div className="service-card relative">
+                <Quote className="h-8 w-8 text-primary/20 absolute top-4 right-4" />
+                
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-primary text-primary" />
+                  ))}
                 </div>
-                <div className="text-sm text-muted-foreground">
-                  {testimonial.company}
+
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  "{testimonial.text}"
+                </p>
+
+                <div className="border-t border-border pt-4">
+                  <div className="font-semibold text-foreground">
+                    {testimonial.name}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {testimonial.company}
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16">
-          <div className="max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Seja o próximo cliente satisfeito
-            </h3>
-            <p className="text-muted-foreground mb-8">
-              Junte-se aos nossos clientes satisfeitos e tenha a garantia de um trabalho 
-              executado com excelência e dentro do prazo.
-            </p>
-            <button 
-              onClick={() => {
-                const element = document.getElementById("orcamento");
-                if (element) element.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="btn-primary"
-            >
-              Solicitar Orçamento Gratuito
-            </button>
+        <ScrollReveal animation="scale-up" delay={200}>
+          <div className="text-center mt-16">
+            <div className="max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold text-foreground mb-4">
+                Seja o próximo cliente satisfeito
+              </h3>
+              <p className="text-muted-foreground mb-8">
+                Junte-se aos nossos clientes satisfeitos e tenha a garantia de um trabalho 
+                executado com excelência e dentro do prazo.
+              </p>
+              <button 
+                onClick={() => {
+                  const element = document.getElementById("orcamento");
+                  if (element) element.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="btn-primary"
+              >
+                Solicitar Orçamento Gratuito
+              </button>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

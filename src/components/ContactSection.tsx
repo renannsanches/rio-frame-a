@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -68,15 +69,17 @@ const ContactSection = () => {
   return (
     <section id="orcamento" className="section-padding">
       <div className="container-width">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
-            Solicite seu <span className="text-primary">Orçamento</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Preencha o formulário abaixo e receba uma proposta personalizada para seu projeto. 
-            Resposta garantida em até 24 horas.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
+              Solicite seu <span className="text-primary">Orçamento</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Preencha o formulário abaixo e receba uma proposta personalizada para seu projeto. 
+              Resposta garantida em até 24 horas.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Form */}

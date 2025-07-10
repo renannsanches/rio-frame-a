@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
@@ -67,51 +68,54 @@ const PortfolioSection = () => {
   return (
     <section className="section-padding bg-secondary/30">
       <div className="container-width">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
-            Projetos <span className="text-primary">Realizados</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-            Conheça alguns dos nossos projetos executados com excelência e qualidade técnica.
-          </p>
+        <ScrollReveal animation="fade-up">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
+              Projetos <span className="text-primary">Realizados</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+              Conheça alguns dos nossos projetos executados com excelência e qualidade técnica.
+            </p>
 
-          {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category) => (
-              <Button
-                key={category.id}
-                variant={currentCategory === category.id ? "default" : "outline"}
-                onClick={() => setCurrentCategory(category.id)}
-                className={currentCategory === category.id ? "btn-primary" : "btn-outline"}
-              >
-                {category.label}
-              </Button>
-            ))}
+            {/* Category Filters */}
+            <div className="flex flex-wrap justify-center gap-4">
+              {categories.map((category) => (
+                <Button
+                  key={category.id}
+                  variant={currentCategory === category.id ? "default" : "outline"}
+                  onClick={() => setCurrentCategory(category.id)}
+                  className={currentCategory === category.id ? "btn-primary" : "btn-outline"}
+                >
+                  {category.label}
+                </Button>
+              ))}
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className="group cursor-pointer"
-              onClick={() => openModal(index)}
-            >
-              <div className="relative overflow-hidden rounded-xl shadow-medium group-hover:shadow-strong transition-all duration-300">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                    <p className="text-sm text-gray-200">{project.description}</p>
+            <ScrollReveal key={project.id} animation="fade-up" delay={index * 100}>
+              <div
+                className="group cursor-pointer"
+                onClick={() => openModal(index)}
+              >
+                <div className="relative overflow-hidden rounded-xl shadow-medium group-hover:shadow-strong transition-all duration-300">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                      <p className="text-sm text-gray-200">{project.description}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 

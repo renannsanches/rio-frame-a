@@ -1,7 +1,14 @@
 import { Clock, Award, Shield, Users } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { useCountAnimation } from "@/hooks/useCountAnimation";
 
 const AboutSection = () => {
+  // Animações de contagem
+  const [yearsRef, yearsCount] = useCountAnimation({ end: 10, duration: 2000 });
+  const [projectsRef, projectsCount] = useCountAnimation({ end: 500, duration: 2500 });
+  const [companiesRef, companiesCount] = useCountAnimation({ end: 50, duration: 2000 });
+  const [satisfactionRef, satisfactionCount] = useCountAnimation({ end: 100, duration: 2000 });
+
   const features = [
     {
       icon: <Clock className="h-8 w-8" />,
@@ -87,20 +94,20 @@ const AboutSection = () => {
               </div>
               
               <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-6 bg-secondary/50 rounded-xl">
-                  <div className="text-3xl font-bold text-primary mb-2">10+</div>
+                <div className="text-center p-6 bg-secondary/50 rounded-xl" ref={yearsRef}>
+                  <div className="text-3xl font-bold text-primary mb-2">{yearsCount}+</div>
                   <div className="text-sm text-muted-foreground">Anos no Mercado</div>
                 </div>
-                <div className="text-center p-6 bg-secondary/50 rounded-xl">
-                  <div className="text-3xl font-bold text-primary mb-2">500+</div>
+                <div className="text-center p-6 bg-secondary/50 rounded-xl" ref={projectsRef}>
+                  <div className="text-3xl font-bold text-primary mb-2">{projectsCount}+</div>
                   <div className="text-sm text-muted-foreground">Projetos Concluídos</div>
                 </div>
-                <div className="text-center p-6 bg-secondary/50 rounded-xl">
-                  <div className="text-3xl font-bold text-primary mb-2">50+</div>
+                <div className="text-center p-6 bg-secondary/50 rounded-xl" ref={companiesRef}>
+                  <div className="text-3xl font-bold text-primary mb-2">{companiesCount}+</div>
                   <div className="text-sm text-muted-foreground">Empresas Atendidas</div>
                 </div>
-                <div className="text-center p-6 bg-secondary/50 rounded-xl">
-                  <div className="text-3xl font-bold text-primary mb-2">100%</div>
+                <div className="text-center p-6 bg-secondary/50 rounded-xl" ref={satisfactionRef}>
+                  <div className="text-3xl font-bold text-primary mb-2">{satisfactionCount}%</div>
                   <div className="text-sm text-muted-foreground">Clientes Satisfeitos</div>
                 </div>
               </div>

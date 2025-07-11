@@ -1,8 +1,22 @@
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-construction.jpg";
+import { useState, useEffect } from "react";
+import heroImage1 from "@/assets/hero-construction.jpg";
+import heroImage2 from "@/assets/hero-construction-2.jpg";
+import heroImage3 from "@/assets/hero-construction-3.jpg";
 
 const HeroSection = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [heroImage1, heroImage2, heroImage3];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 4000); // Troca a cada 4 segundos
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -71,11 +85,16 @@ const HeroSection = () => {
           {/* Hero Image */}
           <div className="relative fade-in">
             <div className="relative rounded-2xl overflow-hidden shadow-strong">
-              <img
-                src={heroImage}
-                alt="Estruturas em aço Rio Frame"
-                className="w-full h-[500px] object-cover"
-              />
+              {images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`Estruturas em aço Rio Frame ${index + 1}`}
+                  className={`w-full h-[500px] object-cover absolute inset-0 transition-opacity duration-1000 ${
+                    index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              ))}
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
             </div>
             

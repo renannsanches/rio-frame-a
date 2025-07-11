@@ -8,6 +8,7 @@ import heroImage3 from "@/assets/hero-construction-3.jpg";
 
 const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const images = [heroImage1, heroImage2, heroImage3];
   
   // Animações de contagem
@@ -18,6 +19,7 @@ const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % 2); // Alterna entre as 2 imagens de fundo
     }, 4000); // Troca a cada 4 segundos
 
     return () => clearInterval(interval);
@@ -36,7 +38,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="hero-bg section-padding min-h-[80vh] flex items-center">
+    <section className={`${currentBgIndex === 0 ? 'hero-bg' : 'hero-bg-2'} section-padding min-h-[80vh] flex items-center`}>
       <div className="container-width">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}

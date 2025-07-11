@@ -1,6 +1,7 @@
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { useCountAnimation } from "@/hooks/useCountAnimation";
 import heroImage1 from "@/assets/hero-construction.jpg";
 import heroImage2 from "@/assets/hero-construction-2.jpg";
 import heroImage3 from "@/assets/hero-construction-3.jpg";
@@ -8,6 +9,11 @@ import heroImage3 from "@/assets/hero-construction-3.jpg";
 const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [heroImage1, heroImage2, heroImage3];
+  
+  // Animações de contagem
+  const [yearsRef, yearsCount] = useCountAnimation({ end: 10, duration: 2000 });
+  const [projectsRef, projectsCount] = useCountAnimation({ end: 500, duration: 2500 });
+  const [satisfactionRef, satisfactionCount] = useCountAnimation({ end: 100, duration: 2000 });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -67,16 +73,16 @@ const HeroSection = () => {
 
             {/* Trust indicators */}
             <div className="flex flex-wrap items-center gap-8 pt-6 border-t border-border/50">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">10+</div>
+              <div className="text-center" ref={yearsRef}>
+                <div className="text-2xl font-bold text-primary">{yearsCount}+</div>
                 <div className="text-sm text-muted-foreground">Anos de Experiência</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">500+</div>
+              <div className="text-center" ref={projectsRef}>
+                <div className="text-2xl font-bold text-primary">{projectsCount}+</div>
                 <div className="text-sm text-muted-foreground">Projetos Realizados</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">100%</div>
+              <div className="text-center" ref={satisfactionRef}>
+                <div className="text-2xl font-bold text-primary">{satisfactionCount}%</div>
                 <div className="text-sm text-muted-foreground">Garantia</div>
               </div>
             </div>

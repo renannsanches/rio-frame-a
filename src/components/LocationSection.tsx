@@ -1,15 +1,75 @@
+import { useEffect, useRef, useState } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import Typewriter from 'typewriter-effect';
 
 const LocationSection = () => {
+  const [showTypewriter, setShowTypewriter] = useState(false);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowTypewriter(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="section-padding bg-secondary/30">
+    <section
+      className="section-padding bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: "url('/assets/bg2.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "500px"
+      }}
+    >
       <div className="container-width">
         <ScrollReveal animation="fade-up">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
-              Nossa <span className="text-primary">Localização</span>
+            <h2
+              ref={titleRef}
+              className="
+                inline-block 
+                bg-[#1E4C5C] 
+                text-white 
+                text-4xl 
+                font-normal 
+                uppercase 
+                tracking-wide 
+                px-4 
+                py-2
+                mb-6
+              "
+              style={{ fontFamily: "'Greater Theory', sans-serif" }}
+            >
+              {showTypewriter ? (
+                <Typewriter
+                  options={{
+                    strings: ['NOSSA LOCALIZAÇÃO'],
+                    autoStart: true,
+                    loop: false,
+                    deleteSpeed: Infinity,
+                    delay: 75,
+                    cursor: ''
+                  }}
+                />
+              ) : null}
             </h2>
+
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Estamos estrategicamente localizados em São José do Rio Preto para melhor atender toda a região.
             </p>
@@ -22,7 +82,7 @@ const LocationSection = () => {
             <div className="relative">
               <div className="w-full h-96 bg-muted rounded-xl overflow-hidden shadow-medium">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15004.376123456789!2d-49.37675!3d-20.82025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94bd6a95b0000001%3A0x11111111111111!2sS%C3%A3o%20Jos%C3%A9%20do%20Rio%20Preto%20-%20SP!5e0!3m2!1spt!2sbr!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3729.841392484761!2d-49.39177579999999!3d-20.797703599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94bdad0b9ac6be73%3A0x5fec9c0f3f5e7feb!2sRio%20Frame%20%7C%20Estruturas%20em%20A%C3%A7o!5e0!3m2!1spt-BR!2spt!4v1752321629800!5m2!1spt-BR!2spt"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -56,9 +116,9 @@ const LocationSection = () => {
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Endereço</h4>
                     <p className="text-muted-foreground">
-                      Rua das Estruturas, 123<br />
-                      Centro - São José do Rio Preto/SP<br />
-                      CEP: 15010-000
+                      Rua General Osório, 1385 | Sala 02<br />
+                      Vila Boa Esperança - São José do Rio Preto/SP<br />
+                      CEP: 15030-200
                     </p>
                   </div>
                 </div>
@@ -69,9 +129,22 @@ const LocationSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Telefones</h4>
-                    <p className="text-muted-foreground">
-                      (17) 3333-4444<br />
-                      (17) 99999-9999 (WhatsApp)
+                    <p className="text-muted-foreground space-y-1">
+                      <a
+                        href="tel:+551732346496"
+                        className="text-primary hover:underline transition-colors"
+                      >
+                        (17) 3234-6496
+                      </a>
+                      <br />
+                      <a
+                        href="https://wa.me/5517997934402"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline transition-colors"
+                      >
+                        (17) 99793-4402 (WhatsApp)
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -83,8 +156,13 @@ const LocationSection = () => {
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">E-mail</h4>
                     <p className="text-muted-foreground">
-                      contato@rioframe.com.br<br />
-                      orcamento@rioframe.com.br
+                      <a
+                        href="mailto:contato@rioframe.com.br"
+                        className="text-primary hover:underline transition-colors"
+                      >
+                        contato@rioframe.com.br
+                      </a>
+                      <br />
                     </p>
                   </div>
                 </div>
@@ -96,31 +174,12 @@ const LocationSection = () => {
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Horário de Funcionamento</h4>
                     <p className="text-muted-foreground">
-                      Segunda à Sexta: 8h às 18h<br />
-                      Sábado: 8h às 12h<br />
+                      Segunda à Sexta: 07h às 17h<br />
+                      Sábado: Fechado<br />
                       Domingo: Fechado
                     </p>
                   </div>
                 </div>
-              </div>
-
-              {/* CTA */}
-              <div className="bg-card p-6 rounded-xl border border-border">
-                <h4 className="font-semibold text-foreground mb-2">
-                  Visite nosso escritório
-                </h4>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Estamos à disposição para uma consulta presencial gratuita.
-                </p>
-                <button 
-                  onClick={() => {
-                    const message = encodeURIComponent("Olá! Gostaria de agendar uma visita ao escritório da Rio Frame.");
-                    window.open(`https://wa.me/5517999999999?text=${message}`, "_blank");
-                  }}
-                  className="btn-whatsapp w-full"
-                >
-                  Agendar Visita
-                </button>
               </div>
             </div>
           </ScrollReveal>

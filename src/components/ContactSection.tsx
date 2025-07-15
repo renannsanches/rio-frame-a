@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Send, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { FaWhatsapp } from "react-icons/fa";
+import Typewriter from 'typewriter-effect';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +19,29 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  const [showTypewriter, setShowTypewriter] = useState(false);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowTypewriter(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -28,10 +53,9 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simular envio do formulário
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       toast({
         title: "Mensagem enviada com sucesso!",
         description: "Entraremos em contato em breve para fornecer seu orçamento.",
@@ -55,25 +79,52 @@ const ContactSection = () => {
     }
   };
 
-  const openWhatsApp = () => {
-    const message = encodeURIComponent(
-      `Olá! Gostaria de solicitar um orçamento:\n\n` +
-      `Nome: ${formData.nome || "[Nome]"}\n` +
-      `Telefone: ${formData.telefone || "[Telefone]"}\n` +
-      `Localidade: ${formData.localidade || "[Localidade]"}\n` +
-      `Mensagem: ${formData.mensagem || "[Descreva seu projeto]"}`
-    );
-    window.open(`https://wa.me/5517999999999?text=${message}`, "_blank");
-  };
-
   return (
-    <section id="orcamento" className="section-padding">
+    <section
+      id="orcamento"
+      className="bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: "url('/assets/bg2.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        paddingTop: "100px",
+        paddingBottom: "100px"
+      }}
+    >
       <div className="container-width">
         <ScrollReveal animation="fade-up">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
-              Solicite seu <span className="text-primary">Orçamento</span>
+            <h2
+              ref={titleRef}
+              className="
+                inline-block 
+                bg-[#1E4C5C] 
+                text-white 
+                text-4xl 
+                font-normal 
+                uppercase 
+                tracking-wide 
+                px-4 
+                py-2
+                mb-6
+              "
+              style={{ fontFamily: "'Greater Theory', sans-serif" }}
+            >
+              {showTypewriter ? (
+                <Typewriter
+                  options={{
+                    strings: ['SOLICITE SEU ORÇAMENTO'],
+                    autoStart: true,
+                    loop: false,
+                    deleteSpeed: Infinity,
+                    delay: 75,
+                    cursor: ''
+                  }}
+                />
+              ) : null}
             </h2>
+
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Preencha o formulário abaixo e receba uma proposta personalizada para seu projeto. 
               Resposta garantida em até 24 horas.
@@ -101,7 +152,7 @@ const ContactSection = () => {
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="telefone" className="block text-sm font-medium text-foreground mb-2">
                     Telefone *
@@ -135,7 +186,7 @@ const ContactSection = () => {
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="localidade" className="block text-sm font-medium text-foreground mb-2">
                     Localidade *
@@ -147,7 +198,7 @@ const ContactSection = () => {
                     required
                     value={formData.localidade}
                     onChange={handleChange}
-                    placeholder="Cidade/Estado"
+                    placeholder="Bairro ou Cidade"
                     className="w-full"
                   />
                 </div>
@@ -178,16 +229,35 @@ const ContactSection = () => {
                   ) : (
                     <>
                       <Send className="mr-2 h-4 w-4" />
-                      Enviar Solicitação
+                      Enviar via E-mail
                     </>
                   )}
                 </Button>
 
                 <Button
                   type="button"
-                  onClick={openWhatsApp}
-                  className="btn-whatsapp w-full"
+                  onClick={() => {
+                    const phone = "5517997934402";
+                    const nome = formData.nome || "";
+                    const telefone = formData.telefone || "";
+                    const localidade = formData.localidade || "";
+                    const mensagem = formData.mensagem || "";
+                    const email = formData.email || "";
+
+                    const text = encodeURIComponent(
+                      `Olá! Meu nome é ${nome}.\n` +
+                      `Telefone: ${telefone}\n` +
+                      `E-mail: ${email}\n` +
+                      `Localidade: ${localidade}\n` +
+                      `Mensagem: ${mensagem}`
+                    );
+
+                    const url = `https://wa.me/${phone}?text=${text}`;
+                    window.open(url, "_blank");
+                  }}
+                  className="btn-whatsapp w-full flex items-center justify-center gap-2"
                 >
+                  <FaWhatsapp className="w-4 h-4 text-white-500" />
                   Enviar via WhatsApp
                 </Button>
               </div>
@@ -208,7 +278,7 @@ const ContactSection = () => {
 
             <div className="space-y-6">
               <a
-                href="tel:+5517999999999"
+                href="tel:+551732346496"
                 className="flex items-center gap-4 p-6 bg-card rounded-xl border border-border hover:border-primary/30 transition-colors group"
               >
                 <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -216,8 +286,17 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Ligue Agora</h4>
-                  <p className="text-muted-foreground">(17) 99999-9999</p>
-                  <p className="text-sm text-muted-foreground">Atendimento imediato</p>
+                  <p className="text-muted-foreground">
+                    <a
+                      href="tel:+551732346496"
+                      className="text-primary hover:underline transition-colors"
+                    >
+                      (17) 3234-6496
+                    </a>
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Atendimento imediato
+                  </p>
                 </div>
               </a>
 
@@ -238,13 +317,28 @@ const ContactSection = () => {
 
             {/* Guarantees */}
             <div className="bg-secondary/50 p-6 rounded-xl">
-              <h4 className="font-semibold text-foreground mb-4">Nossos Compromissos</h4>
+              <h4 className="font-bold text-foreground mb-4">Nossos Compromissos</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>✓ Resposta em até 24 horas</li>
-                <li>✓ Orçamento sem compromisso</li>
-                <li>✓ Visita técnica gratuita</li>
-                <li>✓ Materiais de primeira qualidade</li>
-                <li>✓ Garantia total nos serviços</li>
+                <li className="flex items-center gap-2">
+                  <img src="/assets/check.webp" alt="Check" className="w-4 h-4" />
+                  Resposta em até 24 horas
+                </li>
+                <li className="flex items-center gap-2">
+                  <img src="/assets/check.webp" alt="Check" className="w-4 h-4" />
+                  Orçamento sem compromisso
+                </li>
+                <li className="flex items-center gap-2">
+                  <img src="/assets/check.webp" alt="Check" className="w-4 h-4" />
+                  Visita técnica gratuita
+                </li>
+                <li className="flex items-center gap-2">
+                  <img src="/assets/check.webp" alt="Check" className="w-4 h-4" />
+                  Materiais de primeira qualidade
+                </li>
+                <li className="flex items-center gap-2">
+                  <img src="/assets/check.webp" alt="Check" className="w-4 h-4" />
+                  Garantia total nos serviços
+                </li>
               </ul>
             </div>
           </div>

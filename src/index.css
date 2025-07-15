@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './akira.css';
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
@@ -175,7 +176,22 @@ All colors MUST be HSL.
 
   /* Hero section background */
   .hero-bg {
-    background: var(--gradient-hero);
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.75), hsl(var(--primary-light) / 0.5)), 
+                url('/lovable-uploads/a240e523-fe31-4d1e-a1b7-2c69c72bf0de.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background-image 1s ease-in-out;
+  }
+
+  /* Alternativa para rotação de imagens */
+  .hero-bg-2 {
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.75), hsl(var(--primary-light) / 0.5)), 
+                url('/lovable-uploads/efc80a35-e5d2-4457-be93-3aa825520369.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background-image 1s ease-in-out;
   }
 
   /* Scroll Reveal Animations */

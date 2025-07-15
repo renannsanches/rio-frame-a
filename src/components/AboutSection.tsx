@@ -1,13 +1,41 @@
 import { Clock, Award, Shield, Users } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { useCountAnimation } from "@/hooks/useCountAnimation";
+import { useEffect, useRef, useState } from "react";
+import Typewriter from 'typewriter-effect';
+
+
+
 
 const AboutSection = () => {
   // Animações de contagem
-  const [yearsRef, yearsCount] = useCountAnimation({ end: 10, duration: 2000 });
+  const [yearsRef, yearsCount] = useCountAnimation({ end: 98, duration: 2000 });
   const [projectsRef, projectsCount] = useCountAnimation({ end: 500, duration: 2500 });
   const [companiesRef, companiesCount] = useCountAnimation({ end: 50, duration: 2000 });
   const [satisfactionRef, satisfactionCount] = useCountAnimation({ end: 100, duration: 2000 });
+  const [showTypewriter, setShowTypewriter] = useState(false);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+
+  useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setShowTypewriter(true);
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  if (titleRef.current) {
+    observer.observe(titleRef.current);
+  }
+
+  return () => observer.disconnect();
+}, []);
 
   const features = [
     {
@@ -23,7 +51,7 @@ const AboutSection = () => {
     {
       icon: <Shield className="h-8 w-8" />,
       title: "Garantia Total",
-      description: "Garantia completa em todos os materiais e serviços."
+      description: "Garantia completa em todos os nossos materiais e serviços."
     },
     {
       icon: <Award className="h-8 w-8" />,
@@ -33,13 +61,50 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="sobre" className="section-padding bg-secondary/30">
+    <section
+  id="sobre"
+  className="section-padding bg-cover bg-center bg-no-repeat"
+style={{
+  backgroundImage: "url('/assets/bg.png')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  minHeight: "500px" // ou o valor que funcionar melhor
+}}
+>
+
       <div className="container-width">
         <ScrollReveal animation="fade-up">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
-              Sobre a <span className="text-primary">Rio Frame</span>
-            </h2>
+           <h2
+  ref={titleRef}
+  className="
+    inline-block 
+    bg-[#1E4C5C] 
+    text-white 
+    text-4xl 
+    font-normal 
+    uppercase 
+    tracking-wide 
+    px-4 
+    py-2
+    mb-6
+  "
+  style={{ fontFamily: "'Greater Theory', sans-serif" }}
+>
+  {showTypewriter ? (
+    <Typewriter
+      options={{
+        strings: ['SOBRE A RIO FRAME'],
+        autoStart: true,
+        loop: false,
+        deleteSpeed: Infinity,
+        delay: 75,
+        cursor: ''
+      }}
+    />
+  ) : null}
+</h2>
+
             <p className="text-lg text-muted-foreground leading-relaxed">
               Localizada em São José do Rio Preto (SP), a Rio Frame é especialista em estruturas em aço, 
               atendendo com excelência o mercado residencial, comercial e industrial. Nossa missão é 
@@ -74,29 +139,25 @@ const AboutSection = () => {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Experiência e Tradição em Estruturas de Aço
+                  Excelência e Precisão em Estruturas de Aço
                 </h3>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Com mais de uma década de atuação no mercado, a Rio Frame consolidou-se 
-                    como referência em estruturas metálicas na região de São José do Rio Preto.
+                    A Rio Frame é referência em soluções em estruturas metálicas, oferecendo qualidade superior, inovação e atendimento personalizado em cada projeto realizado em São José do Rio Preto e região.
                   </p>
                   <p>
-                    Atendemos desde pequenos projetos residenciais até grandes complexos 
-                    industriais, sempre com o mesmo compromisso: entregar qualidade superior 
-                    e atendimento personalizado.
+                    Atuamos em projetos residenciais, comerciais e industriais, sempre comprometidos em entregar obras sob medida, com materiais de primeira linha e dentro dos prazos estabelecidos.
                   </p>
                   <p>
-                    Nossa equipe técnica especializada garante que cada projeto seja executado 
-                    com precisão, seguindo as mais rigorosas normas técnicas e de segurança.
+Contamos com uma equipe técnica altamente capacitada, que garante precisão na execução e total conformidade com as normas técnicas e de segurança do setor.
                   </p>
                 </div>
               </div>
               
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center p-6 bg-secondary/50 rounded-xl" ref={yearsRef}>
-                  <div className="text-3xl font-bold text-primary mb-2">{yearsCount}+</div>
-                  <div className="text-sm text-muted-foreground">Anos no Mercado</div>
+                  <div className="text-3xl font-bold text-primary mb-2">{yearsCount}%</div>
+                  <div className="text-sm text-muted-foreground">Obras no Prazo</div>
                 </div>
                 <div className="text-center p-6 bg-secondary/50 rounded-xl" ref={projectsRef}>
                   <div className="text-3xl font-bold text-primary mb-2">{projectsCount}+</div>

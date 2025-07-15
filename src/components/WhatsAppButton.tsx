@@ -1,5 +1,5 @@
-import { MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const WhatsAppButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,8 +18,10 @@ const WhatsAppButton = () => {
   }, []);
 
   const openWhatsApp = () => {
-    const message = encodeURIComponent("Olá! Gostaria de mais informações sobre estruturas em aço da Rio Frame.");
-    window.open(`https://wa.me/5517999999999?text=${message}`, "_blank");
+    const message = encodeURIComponent(
+      "Olá! Gostaria de mais informações sobre estruturas em aço da Rio Frame."
+    );
+    window.open(`https://wa.me/5517997934402?text=${message}`, "_blank");
   };
 
   return (
@@ -30,8 +32,8 @@ const WhatsAppButton = () => {
       }`}
       aria-label="Contato via WhatsApp"
     >
-      <MessageCircle className="h-7 w-7 group-hover:scale-110 transition-transform" />
-      
+      <FaWhatsapp className="h-10 w-10 group-hover:scale-110 transition-transform" />
+
       {/* Tooltip */}
       <div className="absolute right-16 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
         Fale conosco no WhatsApp

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import Typewriter from 'typewriter-effect';
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
@@ -9,6 +10,28 @@ import portfolio3 from "@/assets/portfolio-3.jpg";
 const PortfolioSection = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [currentCategory, setCurrentCategory] = useState("todos");
+  const [showTypewriter, setShowTypewriter] = useState(false);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowTypewriter(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const projects = [
     {
@@ -41,9 +64,10 @@ const PortfolioSection = () => {
     { id: "industrial", label: "Industrial" }
   ];
 
-  const filteredProjects = currentCategory === "todos" 
-    ? projects 
-    : projects.filter(project => project.category === currentCategory);
+  const filteredProjects =
+    currentCategory === "todos"
+      ? projects
+      : projects.filter((project) => project.category === currentCategory);
 
   const openModal = (index: number) => {
     setSelectedImage(index);
@@ -61,18 +85,57 @@ const PortfolioSection = () => {
 
   const prevImage = () => {
     if (selectedImage !== null) {
-      setSelectedImage(selectedImage === 0 ? filteredProjects.length - 1 : selectedImage - 1);
+      setSelectedImage(
+        selectedImage === 0
+          ? filteredProjects.length - 1
+          : selectedImage - 1
+      );
     }
   };
 
   return (
-    <section className="section-padding bg-secondary/30">
+    <section
+      className="section-padding bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: "url('/assets/bg2.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "500px"
+      }}
+    >
       <div className="container-width">
         <ScrollReveal animation="fade-up">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
-              Projetos <span className="text-primary">Realizados</span>
+            <h2
+              ref={titleRef}
+              className="
+                inline-block 
+                bg-[#1E4C5C] 
+                text-white 
+                text-4xl 
+                font-normal 
+                uppercase 
+                tracking-wide 
+                px-4 
+                py-2
+                mb-6
+              "
+              style={{ fontFamily: "'Greater Theory', sans-serif" }}
+            >
+              {showTypewriter ? (
+                <Typewriter
+                  options={{
+                    strings: ['PROJETOS REALIZADOS'],
+                    autoStart: true,
+                    loop: false,
+                    deleteSpeed: Infinity,
+                    delay: 75,
+                    cursor: ''
+                  }}
+                />
+              ) : null}
             </h2>
+
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
               Conheça alguns dos nossos projetos executados com excelência e qualidade técnica.
             </p>

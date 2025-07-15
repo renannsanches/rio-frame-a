@@ -75,17 +75,18 @@ const Footer = () => {
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                   <p className="text-sm text-muted-foreground">
-                    São José do Rio Preto/SP<br />
-                    Centro - CEP: 15010-000
+                    Rua General Osório, 1385 - Sala 02
+                    Vila Boa Esperança<br /> CEP: 15030-200<br />
+                    São José do Rio Preto/SP
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-primary flex-shrink-0" />
                   <a 
-                    href="tel:+5517999999999"
+                    href="tel:+5517997934402"
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    (17) 99999-9999
+                    (17) 99793-4402
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
@@ -106,7 +107,7 @@ const Footer = () => {
         <div className="border-t border-border py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © 2024 Rio Frame - Estruturas em Aço. Todos os direitos reservados.
+              © 2025 Rio Frame - Estruturas em Aço. Todos os direitos reservados.
             </p>
             <p className="text-sm text-muted-foreground">
               São José do Rio Preto - SP

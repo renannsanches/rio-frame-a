@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Akira Expanded';
+  src: url('/fonts/akira-expanded.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Greater Theory';
+  src: url('/fonts/GreaterTheory.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,4 +1,4 @@
-import { Instagram, MapPin, Phone, Mail } from "lucide-react";
+import { Instagram, MapPin, Phone, Mail, Facebook } from "lucide-react";
 import rioFrameLogo from "@/assets/rio-frame-logo.png";
 
 const Footer = () => {
@@ -33,6 +33,14 @@ const Footer = () => {
                   className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
                   <Instagram className="h-5 w-5 text-primary" />
+                </a>
+                <a
+                  href="https://www.facebook.com/rioframe.rp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors"
+                >
+                  <Facebook className="h-5 w-5 text-primary" />
                 </a>
               </div>
             </div>

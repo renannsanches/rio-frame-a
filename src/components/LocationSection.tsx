@@ -31,7 +31,7 @@ const LocationSection = () => {
     <section
       className="section-padding bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/assets/bg2.png')",
+        backgroundImage: "url('/assets/bg4.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "500px"

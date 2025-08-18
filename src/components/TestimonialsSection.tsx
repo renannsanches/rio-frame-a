@@ -34,7 +34,7 @@ const TestimonialsSection = () => {
       company: "Silva Construções",
       text: "Excelente trabalho da Rio Frame. Entregaram nossa estrutura no prazo e com qualidade impecável. Recomendo para qualquer projeto.",
       rating: 5,
-      photo: "/assets/carlos.jpg",
+      photo: "/assets/carlos.png",
     },
     {
       id: 2,
@@ -42,7 +42,7 @@ const TestimonialsSection = () => {
       company: "Arquitetura Santos",
       text: "Profissionais muito competentes. O atendimento foi personalizado e o resultado superou nossas expectativas. Parceira de confiança.",
       rating: 5,
-      photo: "/assets/marina.jpg",
+      photo: "/assets/marina.png",
     },
     {
       id: 3,
@@ -50,7 +50,7 @@ const TestimonialsSection = () => {
       company: "Indústria RO",
       text: "A Rio Frame executou a estrutura do nosso galpão industrial com muita precisão. Equipe técnica de alto nível e materiais de primeira qualidade.",
       rating: 5,
-      photo: "/assets/roberta.jpg",
+      photo: "/assets/roberta.png",
     }
   ];
 
@@ -58,7 +58,7 @@ const TestimonialsSection = () => {
     <section
       className="section-padding bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/assets/bg2.png')",
+        backgroundImage: "url('/assets/bg3.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "500px"

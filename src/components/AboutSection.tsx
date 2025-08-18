@@ -40,23 +40,23 @@ const AboutSection = () => {
   const features = [
     {
       icon: <Clock className="h-8 w-8" />,
-      title: "Rapidez na Instalação",
-      description: "Prazos otimizados sem comprometer a qualidade do serviço."
+      title: "Instalação Ágil e Organizada",
+      description: "Prazos curtos, execução limpa e cronograma respeitado."
     },
     {
       icon: <Users className="h-8 w-8" />,
-      title: "Atendimento Especializado",
-      description: "Equipe técnica qualificada para cada tipo de projeto."
+      title: "Equipe Técnica Especializada",
+      description: "Engenheiros e montadores experientes em cada etapa da obra."
     },
     {
       icon: <Shield className="h-8 w-8" />,
-      title: "Garantia Total",
-      description: "Garantia completa em todos os nossos materiais e serviços."
+      title: "Garantia Total e Suporte Rápido",
+      description: "Atendimento pós-venda com garantia completa nos serviços."
     },
     {
       icon: <Award className="h-8 w-8" />,
-      title: "Qualidade dos Materiais",
-      description: "Apenas materiais certificados e de primeira linha."
+      title: "Materiais Premium Certificados",
+      description: "Perfis, Telhas e Drywall sempre em conformidade técnica."
     }
   ];
 
@@ -66,9 +66,9 @@ const AboutSection = () => {
   className="section-padding bg-cover bg-center bg-no-repeat"
 style={{
   backgroundImage: "url('/assets/bg.png')",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  minHeight: "500px" // ou o valor que funcionar melhor
+  backgroundSize: "auto",
+  backgroundPosition: "full",
+  minHeight: "650px" // ou o valor que funcionar melhor
 }}
 >
 
@@ -106,9 +106,10 @@ style={{
 </h2>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Localizada em São José do Rio Preto (SP), a Rio Frame é especialista em estruturas em aço, 
-              atendendo com excelência o mercado residencial, comercial e industrial. Nossa missão é 
-              entregar soluções completas em estruturas metálicas com rapidez, qualidade e atendimento diferenciado.
+              A Rio Frame é especialista em estruturas de aço sob medida, 
+              com atuação nos setores residencial, comercial e industrial. 
+              Entregamos soluções completas com prazo ágil, materiais certificados 
+              e equipe técnica qualificada, garantindo obras seguras, eficientes e com acabamento de alto padrão.
             </p>
           </div>
         </ScrollReveal>
@@ -143,13 +144,8 @@ style={{
                 </h3>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    A Rio Frame é referência em soluções em estruturas metálicas, oferecendo qualidade superior, inovação e atendimento personalizado em cada projeto realizado em São José do Rio Preto e região.
-                  </p>
-                  <p>
-                    Atuamos em projetos residenciais, comerciais e industriais, sempre comprometidos em entregar obras sob medida, com materiais de primeira linha e dentro dos prazos estabelecidos.
-                  </p>
-                  <p>
-Contamos com uma equipe técnica altamente capacitada, que garante precisão na execução e total conformidade com as normas técnicas e de segurança do setor.
+                  Atuamos com foco em eficiência estrutural, padronização técnica e materiais premium. <br /><br />
+                  Seja para uma obra residencial ou uma estrutura industrial completa, entregamos resultados dentro do prazo e com segurança certificada.
                   </p>
                 </div>
               </div>

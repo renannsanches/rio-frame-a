@@ -31,39 +31,39 @@ const ServicesSection = () => {
   const services = [
     {
       icon: <Building className="h-8 w-8" />,
-      title: "Estruturas Galvanizadas",
+      title: "Estruturas Galvanizadas para Telhados",
       description:
-        "Perfis galvanizados para telhados com alta resistência à corrosão e durabilidade superior."
+        "Perfis metálicos resistentes à corrosão, ideais para obras que exigem durabilidade, segurança e qualidade."
     },
     {
       icon: <Layers className="h-8 w-8" />,
       title: "Telhas Termoacústicas",
       description:
-        "Telhas com isolamento térmico e acústico para máximo conforto e eficiência energética."
+        "Perfis padronizados para montagem de paredes e forros com excelente desempenho estrutural  acabamentos modernos e de fácil instalação."
     },
     {
       icon: <Square className="h-8 w-8" />,
-      title: "Perfis para Drywall",
+      title: "Produtos para Drywall",
       description:
-        "Perfis metálicos de alta qualidade para sistemas de drywall e paredes divisórias."
+        "Perfis metálicos da mais alta qualidade e os melhores produtos para sistemas de monategem de drywall e paredes divisórias."
     },
     {
       icon: <Home className="h-8 w-8" />,
-      title: "Gesso Acartonado",
+      title: "Construção a Seco",
       description:
-        "Sistemas completos de gesso acartonado para acabamentos internos modernos."
+        "Sistema construtivo que não utiliza água na estrutura. Em vez de tijolos e cimento, usa perfis de aço e chapas de gesso, tornando a obra mais rápida e limpa."
     },
     {
       icon: <Factory className="h-8 w-8" />,
-      title: "Sistemas PVC",
+      title: "Forro em PVC",
       description:
-        "Perfis e acessórios em PVC para vedação e acabamentos diversos."
+        "Opção popular, durável e resistente para ambientes internos, principalmente locais úmidos e quentes como banheiros e cozinhas."
     },
     {
       icon: <Wrench className="h-8 w-8" />,
-      title: "Divisórias e Glasroc",
+      title: "Forro Vinílico",
       description:
-        "Sistemas completos para instalação em Glasroc, REVID e divisórias técnicas."
+        "Produto versátil e moderno aos forros tradicionais, trazendo a elegância e a sofisticação de um teto em madeira, porém, de uma forma ecológica leve e duradoura."
     }
   ];
 
@@ -114,7 +114,7 @@ const ServicesSection = () => {
             </h2>
 
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Oferecemos soluções completas em estruturas metálicas para atender
+              Oferecemos soluções completas em estruturas metálicas para atender 
               construtoras, arquitetos, engenheiros e consumidores finais.
             </p>
           </div>

@@ -3,8 +3,8 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import Typewriter from 'typewriter-effect';
-import portfolio1 from "@/assets/portfolio-1.jpg";
-import portfolio2 from "@/assets/portfolio-2.jpg";
+import portfolio1 from "@/assets/portfolio-4.jpg";
+import portfolio2 from "@/assets/portfolio-6.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
 
 const PortfolioSection = () => {
@@ -37,7 +37,7 @@ const PortfolioSection = () => {
     {
       id: 1,
       image: portfolio1,
-      title: "Galpão Industrial",
+      title: "Estrutura Metálica",
       category: "industrial",
       description: "Estrutura metálica completa para galpão industrial de 2.000m²"
     },
@@ -97,7 +97,7 @@ const PortfolioSection = () => {
     <section
       className="section-padding bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/assets/bg2.png')",
+        backgroundImage: "url('/assets/bg3.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "500px"

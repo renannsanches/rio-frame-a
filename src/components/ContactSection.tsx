@@ -84,7 +84,7 @@ const ContactSection = () => {
       id="orcamento"
       className="bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/assets/bg2.png')",
+        backgroundImage: "url('/assets/bg5.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -321,23 +321,23 @@ const ContactSection = () => {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <img src="/assets/check.webp" alt="Check" className="w-4 h-4" />
-                  Resposta em até 24 horas
+                  Resposta em até 24 horas úteis
                 </li>
                 <li className="flex items-center gap-2">
                   <img src="/assets/check.webp" alt="Check" className="w-4 h-4" />
-                  Orçamento sem compromisso
+                  Atendimento personalizado
                 </li>
                 <li className="flex items-center gap-2">
                   <img src="/assets/check.webp" alt="Check" className="w-4 h-4" />
-                  Visita técnica gratuita
+                  Orçamento gratuito e sem compromisso
                 </li>
                 <li className="flex items-center gap-2">
                   <img src="/assets/check.webp" alt="Check" className="w-4 h-4" />
-                  Materiais de primeira qualidade
+                  Visita técnica especializada sem custo adicional
                 </li>
                 <li className="flex items-center gap-2">
                   <img src="/assets/check.webp" alt="Check" className="w-4 h-4" />
-                  Garantia total nos serviços
+                  Garantia contratual em todos os serviços e produtos
                 </li>
               </ul>
             </div>

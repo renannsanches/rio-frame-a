@@ -21,6 +21,7 @@ const ContactSection = () => {
 
   const [showTypewriter, setShowTypewriter] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,6 +80,27 @@ const ContactSection = () => {
     }
   };
 
+  const handleWhatsApp = () => {
+    const form = formRef.current;
+    if (!form?.reportValidity()) {
+      return;
+    }
+
+    const phone = "5517997934402";
+    const { nome, telefone, localidade, mensagem, email } = formData;
+
+    const text = encodeURIComponent(
+      `Olá! Meu nome é ${nome}.\n` +
+      `Telefone: ${telefone}\n` +
+      `E-mail: ${email}\n` +
+      `Localidade: ${localidade}\n` +
+      `Mensagem: ${mensagem}`
+    );
+
+    const url = `https://wa.me/${phone}?text=${text}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <section
       id="orcamento"
@@ -135,7 +157,7 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Form */}
           <div className="bg-card p-8 rounded-2xl shadow-medium border border-border">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="nome" className="block text-sm font-medium text-foreground mb-2">
@@ -236,25 +258,7 @@ const ContactSection = () => {
 
                 <Button
                   type="button"
-                  onClick={() => {
-                    const phone = "5517997934402";
-                    const nome = formData.nome || "";
-                    const telefone = formData.telefone || "";
-                    const localidade = formData.localidade || "";
-                    const mensagem = formData.mensagem || "";
-                    const email = formData.email || "";
-
-                    const text = encodeURIComponent(
-                      `Olá! Meu nome é ${nome}.\n` +
-                      `Telefone: ${telefone}\n` +
-                      `E-mail: ${email}\n` +
-                      `Localidade: ${localidade}\n` +
-                      `Mensagem: ${mensagem}`
-                    );
-
-                    const url = `https://wa.me/${phone}?text=${text}`;
-                    window.open(url, "_blank");
-                  }}
+                  onClick={handleWhatsApp}
                   className="btn-whatsapp w-full flex items-center justify-center gap-2"
                 >
                   <FaWhatsapp className="w-4 h-4 text-white-500" />

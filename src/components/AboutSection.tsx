@@ -10,8 +10,8 @@ import Typewriter from 'typewriter-effect';
 const AboutSection = () => {
   // Animações de contagem
   const [yearsRef, yearsCount] = useCountAnimation({ end: 98, duration: 2000 });
-  const [projectsRef, projectsCount] = useCountAnimation({ end: 500, duration: 2500 });
-  const [companiesRef, companiesCount] = useCountAnimation({ end: 50, duration: 2000 });
+  const [projectsRef, projectsCount] = useCountAnimation({ end: 450, duration: 2500 });
+  const [companiesRef, companiesCount] = useCountAnimation({ end: 120, duration: 2000 });
   const [satisfactionRef, satisfactionCount] = useCountAnimation({ end: 100, duration: 2000 });
   const [showTypewriter, setShowTypewriter] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);

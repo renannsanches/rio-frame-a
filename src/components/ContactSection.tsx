@@ -259,7 +259,7 @@ const ContactSection = () => {
                 <Button
                   type="button"
                   onClick={handleWhatsApp}
-                  className="btn-whatsapp w-full flex items-center justify-center gap-2"
+                  className="bg-[#25D366] hover:bg-[#128C7E] btn-whatsapp w-full flex items-center justify-center gap-2"
                 >
                   <FaWhatsapp className="w-4 h-4 text-white-500" />
                   Enviar via WhatsApp

@@ -34,7 +34,7 @@ const HeroSection = () => {
   ];
 
   const [yearsRef, yearsCount] = useCountAnimation({ end: 10, duration: 2000 });
-  const [projectsRef, projectsCount] = useCountAnimation({ end: 500, duration: 2500 });
+  const [projectsRef, projectsCount] = useCountAnimation({ end: 450, duration: 2500 });
   const [satisfactionRef, satisfactionCount] = useCountAnimation({ end: 100, duration: 2000 });
 
   useEffect(() => {
@@ -121,16 +121,16 @@ const HeroSection = () => {
             Solicite Orçamento
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button
-            onClick={openWhatsApp}
-            className="btn-whatsapp group py-6 px-7"
-          >
-            <FaWhatsapp
-              className="mr-1"
-              style={{ width: "24px", height: "24px", flexShrink: 0 }}
-            />
-            WhatsApp
-          </Button>
+   <Button
+  onClick={openWhatsApp}
+  className="bg-[#25D366] hover:bg-[#128C7E] text-white group py-6 px-7 rounded-lg font-semibold transition-colors duration-200"
+>
+  <FaWhatsapp
+    className="mr-1"
+    style={{ width: "24px", height: "24px", flexShrink: 0 }}
+  />
+  WhatsApp
+</Button>
         </div>
 
         {/* Trust indicators */}

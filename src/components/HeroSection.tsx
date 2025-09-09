@@ -59,9 +59,9 @@ const HeroSection = () => {
 
   const openWhatsApp = () => {
     const message = encodeURIComponent(
-      "Olá! Gostaria de solicitar um orçamento para estruturas em aço."
+      "Olá! Gostaria de mais informações sobre estruturas em aço da Rio Frame."
     );
-    window.open(`https://wa.me/5517997934402?text=${message}`, "_blank");
+    window.open(`https://wa.me/5517997876951?text=${message}`, "_blank");
   };
 
   const currentSlide = slides[currentImageIndex];

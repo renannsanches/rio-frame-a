@@ -138,12 +138,12 @@ const LocationSection = () => {
                       </a>
                       <br />
                       <a
-                        href="https://wa.me/5517997934402"
+                        href="https://wa.me/5517997876951"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline transition-colors"
                       >
-                        (17) 99793-4402 (WhatsApp)
+                        (17) 99787-6951 (WhatsApp)
                       </a>
                     </p>
                   </div>

@@ -86,7 +86,7 @@ const ContactSection = () => {
       return;
     }
 
-    const phone = "5517997934402";
+    const phone = "5517997876951";
     const { nome, telefone, localidade, mensagem, email } = formData;
 
     const text = encodeURIComponent(
